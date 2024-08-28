@@ -10,10 +10,14 @@ import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
 interface IGenreListProps {
+  selectedGenre: Genre | null;
   onSelectGenre: (genre: Genre) => void;
 }
 
-const GenreList: React.FC<IGenreListProps> = ({ onSelectGenre }) => {
+const GenreList: React.FC<IGenreListProps> = ({
+  selectedGenre,
+  onSelectGenre,
+}) => {
   const { data, error, isLoading } = useGenres();
 
   const genres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -35,7 +39,8 @@ const GenreList: React.FC<IGenreListProps> = ({ onSelectGenre }) => {
               objectFit="cover"
             />
             <Button
-              fontSize="lg"
+              fontSize={selectedGenre?.id === genre.id ? "lg" : "md"}
+              fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
               variant="link"
               onClick={() => onSelectGenre(genre)}
             >
