@@ -10,7 +10,7 @@ export type Game = {
   metacritic: number;
 };
 
-const useGames = ({ genre, platform, sortOrder }: GameQuery) =>
+const useGames = ({ genre, platform, sortOrder, searchText }: GameQuery) =>
   useData<Game>(
     "/games",
     {
@@ -18,9 +18,10 @@ const useGames = ({ genre, platform, sortOrder }: GameQuery) =>
         genres: genre?.id,
         platforms: platform?.id,
         ordering: sortOrder,
+        search: searchText,
       },
     },
-    [genre?.id, platform?.id, sortOrder]
+    [genre?.id, platform?.id, sortOrder, searchText]
   );
 
 export default useGames;

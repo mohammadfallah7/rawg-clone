@@ -3,11 +3,15 @@ import logo from "../assets/logo.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
 
-const NavBar = () => {
+interface INavBarProps {
+  onSearch: (searchText: string) => void;
+}
+
+const NavBar: React.FC<INavBarProps> = ({ onSearch }) => {
   return (
     <HStack p="10px">
       <Image src={logo} boxSize="60px" />
-      <SearchInput />
+      <SearchInput onSubmit={(value) => onSearch(value)} />
       <ColorModeSwitch />
     </HStack>
   );
