@@ -18,8 +18,8 @@ const GameGrid: React.FC<IGameGridProps> = ({ gameQuery }) => {
     <>
       {error && <Text>{error}</Text>}
       <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 3, "2xl": 5 }}
-        spacing={3}
+        columns={{ base: 1, md: 2, lg: 3, "2xl": 4 }}
+        spacing={6}
         padding="10px"
       >
         {isLoading &&
